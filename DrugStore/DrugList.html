@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+        <meta name="author" content="Coderthemes">
+        <!-- App Favicon icon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <!-- App Title -->
+        <title>Ubold - Responsive Admin Dashboard Template</title>
+
+        <!--calendar css-->
+        <link href="assets/plugins/fullcalendar/css/fullcalendar.min.css" rel="stylesheet" />
+
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/typicons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/variables.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <script src="assets/js/modernizr.min.js"></script>
+    </head>
+
+    <body>
+
+
+        <header id="topnav">
+            <div class="topbar-main">
+                <div class="container">
+        
+                    <!-- Logo container-->
+                    <div class="logo">
+                        <a href="index.html" class="logo"><span>Drug Store</span></a>
+                    </div>
+                    <!-- End Logo container-->
+        
+                    <div class="menu-extras">
+
+                        <ul class="nav navbar-nav navbar-right pull-right">
+                            <li class="dropdown navbar-c-items">
+                                <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true"><b style="color: chocolate;">Quản lý</b> </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0)"><i class="ti-user text-custom m-r-10"></i> Profile</a></li>
+                                    <li><a href="javascript:void(0)"><i class="ti-settings text-custom m-r-10"></i> Settings</a></li>
+                                    <li><a href="javascript:void(0)"><i class="ti-lock text-custom m-r-10"></i> Lock screen</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="javascript:void(0)"><i class="ti-power-off text-danger m-r-10"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>  
+                </div>
+            </div>
+        
+            <div class="navbar-custom">
+                <div class="container">
+                    <div id="navigation">
+                        <!-- Navigation Menu-->
+                        <ul class="navigation-menu">
+                            <li class="has-submenu">
+                                <a href="#"><i class="md md-dashboard"></i>Nhập xuất</a>
+                            </li>
+
+                            <li class="has-submenu">
+                                <a href="#"><i class="md md-color-lens"></i>Quản lý thuốc</a>
+                            </li>
+        
+                            <li class="has-submenu">
+                                <a href="#"><i class="md md-layers"></i>Giao dịch</a>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#"><i class="md md-class"></i>Sổ quỹ</a>
+                            </li>
+        
+                            <li class="has-submenu">
+                                <a href="#"><i class="md md-pages"></i>Báo cáo</a>
+                            </li>
+        
+                            <li class="has-submenu">
+                                <a href="#"><i class="md md-folder-special"></i>Tra cứu</a>
+                            </li>
+                        </ul>
+                        <!-- End navigation menu        -->
+                    </div>
+                </div> <!-- end container -->
+            </div> <!-- end navbar-custom -->
+        </header>
+    
+
+        <div class="wrapper">
+            <div class="container">
+                <div class="col-md-3">
+                    <div class="grid-container">
+                        <div class="row">
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0">
+                                    <b>Tên thuốc</b>
+                                </h4>
+                                <div class="row">
+                                    <form role="search" >
+                                         <input type="text" placeholder="Nhập tên thuốc..." class="form-control">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0">
+                                    <b>Nhóm thuốc</b>
+                                </h4>
+                                <div class="row">
+                                    <div class="radio">
+                                        <input type="radio" name="radio" id="ketoa" value="ketoa">
+                                        <label for="ketoa">
+                                            Kê toa
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" name="radio" id="khongketoa" value="khongketoa">
+                                        <label for="khongketoa">
+                                            Không kê toa
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0">
+                                    <b>Loại thuốc</b>
+                                </h4>
+
+                                <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">Lựa chọn tag loại thuốc</h4>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="grid-container">
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="giamdau" type="checkbox">
+                                                                <label for="giamdau">
+                                                                    Giảm đau hạ sốt
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="tieuhoa" type="checkbox">
+                                                                <label for="tieuhoa">
+                                                                    Tiêu hóa
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="hohap" type="checkbox">
+                                                                <label for="hohap">
+                                                                    Hô hấp
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="diung" type="checkbox">
+                                                                <label for="diung">
+                                                                    Chống dị ứng
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="timmach" type="checkbox">
+                                                                <label for="timmach">
+                                                                    Tim mạch huyết áp
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="tietnieu" type="checkbox">
+                                                                <label for="tietnieu">
+                                                                    Tiết niệu
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="grid-container">
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="khangnam" type="checkbox">
+                                                                <label for="khangnam">
+                                                                    Kháng nấm
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="khangvirus" type="checkbox">
+                                                                <label for="khangvirus">
+                                                                    Kháng virus
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="tieuduong" type="checkbox">
+                                                                <label for="tieuduong">
+                                                                    Tiểu đường 
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="khangviem" type="checkbox">
+                                                                <label for="khangviem">
+                                                                    Kháng viêm
+                                                                </label>
+                                                            </div>
+                                                            <div class="checkbox checkbox-circle">
+                                                                <input id="vitamin" type="checkbox">
+                                                                <label for="vitamin">
+                                                                    Vitamin và khoáng chất
+                                                                </label>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-primary waves-effect waves-light">OK</button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                                
+                                <button class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#myModal">Chọn loại thuốc</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <button type="button" class="btn btn-success btn-rounded waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-search"></i></span>
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="grid-container">
+                        col-md-9
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery  -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/detect.js"></script>
+        <script src="assets/js/fastclick.js"></script>
+        <script src="assets/js/jquery.slimscroll.js"></script>
+        <script src="assets/js/jquery.blockUI.js"></script>
+        <script src="assets/js/waves.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/jquery.nicescroll.js"></script>
+        <script src="assets/js/jquery.scrollTo.min.js"></script>
+
+        <!-- Modal-Effect -->
+        <script src="assets/plugins/custombox/js/custombox.min.js"></script>
+        <script src="assets/plugins/custombox/js/legacy.min.js"></script>
+
+        <!-- App core js -->
+        <script src="assets/js/jquery.core.js"></script>
+        <script src="assets/js/jquery.app.js"></script>
+    </body>
+</html>
