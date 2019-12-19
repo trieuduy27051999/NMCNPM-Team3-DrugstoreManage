@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+
+  <body>
+    <header id="topnav">
+      <% include partials/header %>
+    </header>
+
+    <div class="wrapper">
+      <div class="container">
+        <div class="col-md-3">
+          <div class="grid-container">
+            <div class="row">
+              <div class="card-box">
+                <h4 class="header-title m-t-0">
+                  <b>Tên thuốc</b>
+                </h4>
+                <div class="row">
+                  <form role="search">
+                    <input
+                      type="text"
+                      placeholder="Nhập tên thuốc..."
+                      class="form-control"
+                    />
+                  </form>
+                </div>
+              </div>
+              <div class="card-box">
+                <h4 class="header-title m-t-0">
+                  <b>Nhóm thuốc</b>
+                </h4>
+                <div class="row">
+                  <div class="radio">
+                    <input type="radio" name="radio" id="ketoa" value="ketoa" />
+                    <label for="ketoa">
+                      Kê toa
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <input
+                      type="radio"
+                      name="radio"
+                      id="khongketoa"
+                      value="khongketoa"
+                    />
+                    <label for="khongketoa">
+                      Không kê toa
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="card-box">
+                <h4 class="header-title m-t-0">
+                  <b>Loại thuốc</b>
+                </h4>
+
+                <div
+                  id="myModal"
+                  class="modal fade"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="myModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-hidden="true"
+                        >
+                          ×
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                          Lựa chọn tag loại thuốc
+                        </h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="grid-container">
+                              <div class="checkbox checkbox-circle">
+                                <input id="giamdau" type="checkbox" />
+                                <label for="giamdau">
+                                  Giảm đau hạ sốt
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="tieuhoa" type="checkbox" />
+                                <label for="tieuhoa">
+                                  Tiêu hóa
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="hohap" type="checkbox" />
+                                <label for="hohap">
+                                  Hô hấp
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="diung" type="checkbox" />
+                                <label for="diung">
+                                  Chống dị ứng
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="timmach" type="checkbox" />
+                                <label for="timmach">
+                                  Tim mạch huyết áp
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="tietnieu" type="checkbox" />
+                                <label for="tietnieu">
+                                  Tiết niệu
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="grid-container">
+                              <div class="checkbox checkbox-circle">
+                                <input id="khangnam" type="checkbox" />
+                                <label for="khangnam">
+                                  Kháng nấm
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="khangvirus" type="checkbox" />
+                                <label for="khangvirus">
+                                  Kháng virus
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="tieuduong" type="checkbox" />
+                                <label for="tieuduong">
+                                  Tiểu đường
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="khangviem" type="checkbox" />
+                                <label for="khangviem">
+                                  Kháng viêm
+                                </label>
+                              </div>
+                              <div class="checkbox checkbox-circle">
+                                <input id="vitamin" type="checkbox" />
+                                <label for="vitamin">
+                                  Vitamin và khoáng chất
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-default waves-effect"
+                          data-dismiss="modal"
+                        >
+                          Đóng
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-primary waves-effect waves-light"
+                        >
+                          OK
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+
+                <button
+                  class="btn btn-primary waves-effect waves-light"
+                  data-toggle="modal"
+                  data-target="#myModal"
+                >
+                  Chọn loại thuốc
+                </button>
+              </div>
+            </div>
+
+            <div class="row">
+              <button
+                type="button"
+                class="btn btn-success btn-rounded waves-effect waves-light"
+              >
+                <span class="btn-label"><i class="fa fa-search"></i></span>
+                Tìm kiếm
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="grid-container">
+            col-md-9
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% include partials/script %>
+  </body>
+</html>
