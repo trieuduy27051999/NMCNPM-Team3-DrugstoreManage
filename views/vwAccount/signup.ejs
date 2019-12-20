@@ -1,1 +1,57 @@
-<h4>This is Sign up page</h4>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+    <div class="clearfix"></div>
+    <div class="wrapper-page">
+        <div class="card-box shadow border-success">
+            <div class="panel-heading">
+                <h3 class="text-center"> <strong class="text-custom">Register</strong> </h3>
+            </div>
+            <div>
+                <form onsubmit="return validate();" method="POST" novalidate id="frmRegister" name="frmRegister">
+                    <h4 class="mb-3"><b>Account</b></h4>
+                    <div class="form-group">
+                        <label for="txtUsername">Username</label>
+                        <input type="text" class="form-control" id="txtUsername" name="f_Username" placeholder="john"
+                            autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPassword">Password</label>
+                        <input type="password" class="form-control" id="txtPassword" name="raw_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtConfirm">Confirm</label>
+                        <input type="password" class="form-control" id="txtConfirm">
+                    </div>
+
+                    <hr class="mb-4">
+                    <h4 class="mb-3"><b>Information</b></h4>
+                    <div class="form-group">
+                        <label for="txtName">Name</label>
+                        <input type="text" class="form-control" id="txtName" name="f_Name" placeholder="John Witch">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtEmail">Email</label>
+                        <input type="text" class="form-control" id="txtEmail" name="f_Email" placeholder="jw@movie.db">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDOB">Date of Birth</label>
+                        <input type="text" class="form-control" id="txtDOB" name="dob">
+                    </div>
+                    <a name="" id="" class="btn btn-danger" href="/" role="button">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Register
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% include ../partials/script %>
+</body>
+
+</html>

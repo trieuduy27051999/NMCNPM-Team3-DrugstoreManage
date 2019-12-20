@@ -24,6 +24,6 @@ exports.getLogIn = (req, res, next) => {
 
 exports.getSignUp= (req, res, next) => {
   res.render("vwAccount/signup", {
-    title: "Sing Up"
+    title: "Sign Up"
   });
 };

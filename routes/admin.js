@@ -9,9 +9,8 @@ router.get("/import", authController.getImport);
 
 router.get("/drug-list", authController.getDrugList);
 
-router.get('/login', authController.getLogIn);
+router.get('/login',authController.getLogIn);
 
-router.get('/signup', authController.getSignUp);
-
+router.get('/signup',authController.getSignUp);
 
 module.exports = router;
