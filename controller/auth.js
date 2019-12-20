@@ -15,3 +15,15 @@ exports.getDrugList = (req, res, next) => {
     title: "Danh sách thuốc"
   });
 };
+
+exports.getLogIn = (req, res, next) => {
+  res.render("vwAccount/login", {
+    title: "Log in"
+  });
+};
+
+exports.getSignUp= (req, res, next) => {
+  res.render("vwAccount/signup", {
+    title: "Sing Up"
+  });
+};
