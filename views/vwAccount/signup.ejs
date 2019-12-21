@@ -3,6 +3,8 @@
 
 <head>
     <% include ../partials/head %>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">%>
 </head>
 
 <body>
@@ -13,20 +15,20 @@
                 <h3 class="text-center"> <strong class="text-custom">Register</strong> </h3>
             </div>
             <div>
-                <form onsubmit="return validate();" method="POST" novalidate id="frmRegister" name="frmRegister">
+                <form onsubmit="return validate();" method="POST" id="frmRegister" name="frmRegister">
                     <h4 class="mb-3"><b>Account</b></h4>
                     <div class="form-group">
                         <label for="txtUsername">Username</label>
                         <input type="text" class="form-control" id="txtUsername" name="f_Username" placeholder="john"
-                            autofocus>
+                           required autofocus>
                     </div>
                     <div class="form-group">
                         <label for="txtPassword">Password</label>
-                        <input type="password" class="form-control" id="txtPassword" name="raw_password">
+                        <input type="password" class="form-control" id="txtPassword" name="raw_password" required>
                     </div>
                     <div class="form-group">
                         <label for="txtConfirm">Confirm</label>
-                        <input type="password" class="form-control" id="txtConfirm">
+                        <input type="password" class="form-control" id="txtConfirm" required>
                     </div>
 
                     <hr class="mb-4">
@@ -43,15 +45,33 @@
                         <label for="txtDOB">Date of Birth</label>
                         <input type="text" class="form-control" id="txtDOB" name="dob">
                     </div>
-                    <a name="" id="" class="btn btn-danger" href="/" role="button">
+                    <!-- <a type="submit" class="btn btn-danger" href="/" role="button">
                         <i class="fa fa-check" aria-hidden="true"></i>
                         Register
-                    </a>
+                    </a> -->
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Register
+                    </button>
                 </form>
             </div>
         </div>
     </div>
     <% include ../partials/script %>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script>
+        $('#txtDOB').datetimepicker({
+            // format: 'd/m/Y H:i'
+            format: 'd/m/Y',
+            timepicker: false,
+            mask: true,
+        });
+
+        function validate() {
+            return false;
+        }
+    </script>
 </body>
 
 </html>
