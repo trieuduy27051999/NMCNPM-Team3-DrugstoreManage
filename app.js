@@ -1,11 +1,19 @@
+require("dotenv").config();
+
+//require("./util/createUser");
+
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
+const mongoose = require("mongoose");
 var adminRouter = require("./routes/admin");
 var usersRouter = require("./routes/users");
+const urlConnect = process.env.DB;
+const passport = require("passport");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 var app = express();
 
@@ -19,9 +27,35 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", adminRouter);//route admin
-app.use("/users", usersRouter);//route user
+mongoose.connect(
+  urlConnect,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  err => {
+    if (err) throw err;
+    console.log("Connect successfully!");
+  }
+);
 
+app.use(flash());
+
+app.use(
+  session({
+    secret: "secret",
+    saveUninitialized: true,
+    resave: true
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+require("./config/passport")(passport);
+
+app.use("/", adminRouter); //route admin
+app.use("/users", usersRouter); //route user
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

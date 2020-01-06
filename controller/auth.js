@@ -1,29 +1,40 @@
-exports.getRevenue = (req, res, next) => {
-  res.render("revenue", {
-    title: "Doanh thu"
-  });
-};
-
-exports.getImport = (req, res, next) => {
-  res.render("import-drug", {
-    title: "Nhập thuốc"
-  });
-};
-
-exports.getDrugList = (req, res, next) => {
-  res.render("drug-list", {
-    title: "Danh sách thuốc"
-  });
-};
+const passport = require("passport");
 
 exports.getLogIn = (req, res, next) => {
-  res.render("vwAccount/login", {
-    title: "Log in"
+  const message = req.flash("error")[0];
+  if (!req.isAuthenticated()) {
+    res.render("login", {
+      title: "Đăng nhập",
+      message: `${message}`,
+      user: req.user
+    });
+  } else {
+    res.redirect("/");
+  }
+};
+
+exports.postLogIn = (req, res, next) => {
+  passport.authenticate("local-signin", {
+    successReturnToOrRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true
+  })(req, res, next);
+};
+
+exports.getSignUp = (req, res, next) => {
+  const message = req.flash("error")[0];
+
+  res.render("register", {
+    title: "Đăng ký",
+    message: `${message}`,
+    user: req.user
   });
 };
 
-exports.getRegister= (req, res, next) => {
-  res.render("vwAccount/register", {
-    title: "Register"
-  });
+exports.postSignUp = (req, res, next) => {
+  passport.authenticate("local-signup", {
+    successReturnToOrRedirect: "/",
+    failureRedirect: "/register",
+    failureFlash: true
+  })(req, res, next);
 };
