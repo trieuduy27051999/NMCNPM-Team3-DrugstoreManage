@@ -98,7 +98,7 @@ module.exports = passport => {
           // save the user
           newUser.save(function(err) {
             if (err) return done(err);
-            return done(null, false);
+            return done(null, newUser);
           });
         });
       });

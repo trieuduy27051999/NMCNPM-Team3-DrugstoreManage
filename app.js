@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 //require("./util/createUser");
-require("./util/createProduct");
+// require("./util/createProduct");
 
 var createError = require("http-errors");
 var express = require("express");
@@ -9,7 +9,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
-var adminRouter = require("./routes/admin");
+var adminRouter = require("./routes/drugstore");
 const urlConnect = process.env.DB;
 const passport = require("passport");
 const session = require("express-session");

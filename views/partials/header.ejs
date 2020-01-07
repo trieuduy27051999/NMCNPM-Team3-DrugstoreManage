@@ -9,6 +9,7 @@
     <div class="menu-extras">
       <ul class="nav navbar-nav navbar-right pull-right">
         <li class="dropdown navbar-c-items">
+          <% if(user.role ){ %>
           <a
             href=""
             class="dropdown-toggle waves-effect waves-light profile"
@@ -16,22 +17,17 @@
             aria-expanded="true"
             ><b style="color: chocolate;">Quản lý</b>
           </a>
+          <% } else{%>
+          <a
+            href=""
+            class="dropdown-toggle waves-effect waves-light profile"
+            data-toggle="dropdown"
+            aria-expanded="true"
+            ><b style="color: chocolate;">Nhân viên</b>
+          </a>
+          <% } %>
           <ul class="dropdown-menu">
-            <li>
-              <a href="javascript:void(0)"
-                ><i class="ti-user text-custom m-r-10"></i> Profile</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)"
-                ><i class="ti-settings text-custom m-r-10"></i> Settings</a
-              >
-            </li>
-            <li>
-              <a href="javascript:void(0)"
-                ><i class="ti-lock text-custom m-r-10"></i> Lock screen</a
-              >
-            </li>
+            <% if(user.role){ %>
             <li>
               <a href="/register">
                 <i
@@ -41,6 +37,7 @@
                 Register
               </a>
             </li>
+            <% } %>
             <li class="divider"></li>
             <li>
               <a href="/logout"
@@ -62,9 +59,11 @@
         <li class="has-submenu">
           <a href="/"><i class="md md-layers"></i>Tổng quan</a>
         </li>
+        <% if(user.role) {%>
         <li class="has-submenu">
           <a href="/import-drug"><i class="md md-dashboard"></i>Nhập xuất</a>
         </li>
+        <% } %>
 
         <li class="has-submenu">
           <a href="/drug-list"><i class="md md-color-lens"></i>Quản lý thuốc</a>
@@ -72,6 +71,9 @@
 
         <li class="has-submenu">
           <a href="/get-order"><i class="md md-pages"></i>Báo cáo</a>
+        </li>
+        <li class="has-submenu">
+          <a href="/add-order"><i class="md md-shopping-cart"></i>Bán hàng</a>
         </li>
       </ul>
       <!-- End navigation menu        -->

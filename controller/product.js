@@ -46,7 +46,8 @@ exports.getOverview = (req, res, next) => {
               Income: Income,
               totalOrder: totalOrder,
               totalIncome: totalIncome,
-              top5: top5
+              top5: top5,
+              user: req.user
             });
           });
       });
@@ -75,7 +76,8 @@ exports.getImport = (req, res, next) => {
   }).then(products => {
     res.render("import-drug", {
       title: "Nhập thuốc",
-      listProduct: products
+      listProduct: products,
+      user: req.user
     });
   });
 };
@@ -83,17 +85,20 @@ exports.getImport = (req, res, next) => {
 exports.getDrugList = (req, res, next) => {
   TENSP = req.query.TENSP !== undefined ? req.query.TENSP : TENSP;
   LOAISP = req.query.LOAISP !== undefined ? req.query.LOAISP : LOAISP;
+
   if (Object.entries(req.query).length == 0) {
     TENSP = "";
     LOAISP = "";
   }
+
   Product.find({
     TENSP: new RegExp(TENSP, "i"),
     MALOAI: new RegExp(LOAISP, "i")
   }).then(products => {
     res.render("drug-list", {
       title: "Danh sách thuốc",
-      listProduct: products
+      listProduct: products,
+      user: req.user
     });
   });
 };
@@ -114,7 +119,8 @@ exports.addOrder = (req, res, next) => {
     res.render("add-order", {
       title: "Thanh toán",
       listProduct: products,
-      orderProduct: orderProduct
+      orderProduct: orderProduct,
+      user: req.user
     });
   });
 };
@@ -160,5 +166,15 @@ exports.deleteItem = (req, res, next) => {
     order.deleteItem(product.MASP);
     req.session.order = order;
     res.redirect("/add-order");
+  });
+};
+
+exports.getOrder = (req, res, next) => {
+  Order.find({}).then(orders => {
+    return res.render("get-order", {
+      title: "Báo cáo",
+      orders: orders,
+      user: req.user
+    });
   });
 };

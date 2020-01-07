@@ -22,10 +22,6 @@ const productSchema = new Schema({
     type: String,
     required: false
   },
-  HANGSX: {
-    type: String,
-    required: false
-  },
   NGAYHETHAN: {
     type: Date,
     required: false
@@ -37,10 +33,6 @@ const productSchema = new Schema({
   GIA: {
     type: Number,
     required: true
-  },
-  image: {
-    type: String,
-    required: false
   },
   buyCount: {
     type: Number,
