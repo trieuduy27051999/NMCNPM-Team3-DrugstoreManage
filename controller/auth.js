@@ -23,12 +23,15 @@ exports.postLogIn = (req, res, next) => {
 
 exports.getSignUp = (req, res, next) => {
   const message = req.flash("error")[0];
-
-  res.render("register", {
-    title: "Đăng ký",
-    message: `${message}`,
-    user: req.user
-  });
+  if (req.isAuthenticated) {
+    res.render("register", {
+      title: "Đăng ký",
+      message: `${message}`,
+      user: req.user
+    });
+  } else {
+    res.redirect("/login");
+  }
 };
 
 exports.postSignUp = (req, res, next) => {

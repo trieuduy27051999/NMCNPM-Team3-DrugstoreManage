@@ -3,6 +3,13 @@ var TENSP;
 var LOAISP;
 var MASP;
 var MANCC;
+
+exports.getOverview = (req, res, next) => {
+  res.render("overview", {
+    title: "Tổng quan"
+  });
+};
+
 exports.getRevenue = (req, res, next) => {
   res.render("revenue", {
     title: "Doanh thu"
@@ -43,6 +50,19 @@ exports.getDrugList = (req, res, next) => {
   }).then(products => {
     res.render("drug-list", {
       title: "Danh sách thuốc",
+      listProduct: products
+    });
+  });
+};
+
+exports.addOrder = (req, res, next) => {
+  TENSP = req.query.TENSP !== undefined ? req.query.TENSP : TENSP;
+  if (Object.entries(req.query).length == 0) {
+    TENSP = "";
+  }
+  Product.find({ TENSP: new RegExp(TENSP, "i") }).then(products => {
+    res.render("add-order", {
+      title: "Thanh toán",
       listProduct: products
     });
   });

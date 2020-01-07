@@ -9,6 +9,10 @@
 <script src="assets/js/wow.min.js"></script>
 <script src="assets/js/jquery.nicescroll.js"></script>
 <script src="assets/js/jquery.scrollTo.min.js"></script>
+<script src="assets/pages/jquery.dashboard.js"></script>
+<script src="assets/plugins/jquery-knob/jquery.knob.js"></script>
+<script src="assets/plugins/waypoints/lib/jquery.waypoints.js"></script>
+<script src="assets/plugins/counterup/jquery.counterup.min.js"></script>
 
 <!--Morris Chart-->
 <script src="assets/plugins/morris/morris.min.js"></script>
@@ -22,3 +26,13 @@
 <!-- App core js -->
 <script src="assets/js/jquery.core.js"></script>
 <script src="assets/js/jquery.app.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".counter").counterUp({
+      delay: 100,
+      time: 1200
+    });
+
+    $(".knob").knob();
+  });
+</script>
