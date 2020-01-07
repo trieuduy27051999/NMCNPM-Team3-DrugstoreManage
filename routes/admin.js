@@ -23,4 +23,10 @@ router.get("/logout", authController.getLogOut);
 
 router.get("/add-order", productController.addOrder);
 
+router.get("/add-to-order/:TENSP", productController.addToOrder);
+
+router.get("/check-out", productController.getCheckOut);
+
+router.get("/delete/:TENSP", productController.deleteItem);
+
 module.exports = router;

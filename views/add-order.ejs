@@ -38,10 +38,6 @@
               <!-- form-group -->
             </form>
           </div>
-          <!-- <div class="col-sm-5">
-                         <a href="#custom-modal" class="btn btn-default btn-md waves-effect waves-light m-b-30" data-animation="fadein" data-plugin="custommodal"
-                                                data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-add"></i> Add New</a>
-                    </div> -->
         </div>
 
         <div class="row">
@@ -66,9 +62,19 @@
                     </p>
                   </div>
                 </div>
+                <div class="table-detail">
+                  <div class="member-info">
+                    <p class="text-dark m-b-5">
+                      <b>Giá: </b>
+                      <span class="text-muted"><%= prod.GIA %>đ</span>
+                    </p>
+                  </div>
+                </div>
 
                 <div class="table-detail table-actions-bar">
-                  <a href="#" class="table-action-btn"
+                  <a
+                    href="/add-to-order/<%= prod.TENSP %>"
+                    class="table-action-btn"
                     ><i class="md md-add-shopping-cart"></i
                   ></a>
                 </div>
@@ -87,162 +93,58 @@
                   <thead>
                     <tr>
                       <th>Tên thuốc</th>
-                      <th>Nhà sản xuất</th>
+                      <th>Nhà cung cấp</th>
                       <th style="min-width: 80px;">Giá thành</th>
+                      <th>Số lượng</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <% listProduct.forEach(function(prod)) %>
+                    <% if(orderProduct != null)
+                    orderProduct.forEach(function(prod){ %>
                     <tr>
                       <td>
-                        <span
-                          data-plugin="peity-bar"
-                          data-colors="#5fbeaa,#5fbeaa"
-                          data-width="80"
-                          data-height="30"
-                          >5,3,9,6,5,9,7,3,5,2</span
-                        >
+                        <%=prod.TENSP%>
                       </td>
                       <td>
-                        <img
-                          src="assets/images/products/iphone.jpg"
-                          class="thumb-sm pull-left m-r-10"
-                          alt=""
-                        />
-                        Apple iPhone
+                        <%=prod.MANCC%>
                       </td>
-                      <td><span class="text-custom">+$230</span></td>
+                      <td><span class="text-custom"><%=prod.GIA%></span></td>
                       <td>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-edit"></i
-                        ></a>
-                        <a href="#" class="table-action-btn"
+                        <%=prod.qty%>
+                      </td>
+                      <td>
+                        <a
+                          href="/delete/<%=prod.TENSP%>"
+                          class="table-action-btn"
                           ><i class="md md-close"></i
                         ></a>
                       </td>
                     </tr>
 
-                    <tr>
-                      <td>
-                        <span
-                          data-plugin="peity-line"
-                          data-fill="#5fbeaa"
-                          data-stroke="#5fbeaa"
-                          data-width="80"
-                          data-height="30"
-                          >0,-3,-6,-4,-5,-4,-7,-3,-5,-2</span
-                        >
-                      </td>
-                      <td>
-                        <img
-                          src="assets/images/products/samsung.jpg"
-                          class="thumb-sm pull-left m-r-10"
-                          alt=""
-                        />
-                        Samsung Phone
-                      </td>
-                      <td><span class="text-danger">-$154</span></td>
-                      <td>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-edit"></i
-                        ></a>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-close"></i
-                        ></a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <span
-                          data-plugin="peity-line"
-                          data-fill="#fff"
-                          data-stroke="#5fbeaa"
-                          data-width="80"
-                          data-height="30"
-                          >5,3,9,6,5,9,7,3,5,2</span
-                        >
-                      </td>
-                      <td>
-                        <img
-                          src="assets/images/products/imac.jpg"
-                          class="thumb-sm pull-left m-r-10"
-                          alt=""
-                        />
-                        Apple iPhone
-                      </td>
-                      <td><span class="text-custom">+$1850</span></td>
-                      <td>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-edit"></i
-                        ></a>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-close"></i
-                        ></a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <span
-                          data-plugin="peity-pie"
-                          data-colors="#5fbeaa,#ebeff2"
-                          data-width="30"
-                          data-height="30"
-                          >1/5</span
-                        >
-                      </td>
-                      <td>
-                        <img
-                          src="assets/images/products/macbook.jpg"
-                          class="thumb-sm pull-left m-r-10"
-                          alt=""
-                        />
-                        Apple iPhone
-                      </td>
-                      <td><span class="text-danger">-$560</span></td>
-                      <td>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-edit"></i
-                        ></a>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-close"></i
-                        ></a>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <span
-                          data-plugin="peity-bar"
-                          data-colors="#5fbeaa,#ebeff2"
-                          data-width="80"
-                          data-height="30"
-                          >5,3,9,6,5,9,7,3,5,2</span
-                        >
-                      </td>
-                      <td>
-                        <img
-                          src="assets/images/products/lumia.jpg"
-                          class="thumb-sm pull-left m-r-10"
-                          alt=""
-                        />
-                        Lumia iPhone
-                      </td>
-                      <td><span class="text-custom">+$230</span></td>
-                      <td>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-edit"></i
-                        ></a>
-                        <a href="#" class="table-action-btn"
-                          ><i class="md md-close"></i
-                        ></a>
-                      </td>
-                    </tr>
+                    <% }) %>
                   </tbody>
                 </table>
               </div>
             </div>
+            <div class="col-lg-6" style="font-size:20px">
+              Tổng tiền:<% if(session.order){ %>
+              <strong><%= session.order.totalPrice%>đ</strong>
+              <% } else{%>
+              <strong>0đ</strong>
+              <% } %>
+            </div>
+
+            <div class="col-lg-2"></div>
+            <% if(session.order && session.order.totalPrice != 0){ %>
+            <div class="col-lg-4">
+              <a
+                href="/check-out"
+                class="btn btn-danger btn-rounded waves-effect waves-light"
+                style="font-size:15px"
+                >Thanh toán</a
+              >
+            </div>
+            <% } %>
           </div>
         </div>
 

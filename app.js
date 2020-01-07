@@ -10,10 +10,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 var adminRouter = require("./routes/admin");
-var usersRouter = require("./routes/users");
 const urlConnect = process.env.DB;
 const passport = require("passport");
 const session = require("express-session");
+const MongoStore = require("connect-mongodb-session")(session);
 const flash = require("connect-flash");
 
 var app = express();
@@ -27,6 +27,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ uri: process.env.DB, collection: "sessions" }),
+    cookie: { maxAge: 180 * 60 * 1000 }
+  })
+);
+
+app.use(function(req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
 
 mongoose.connect(
   urlConnect,
@@ -56,7 +71,6 @@ app.use(passport.session());
 require("./config/passport")(passport);
 
 app.use("/", adminRouter); //route admin
-app.use("/users", usersRouter); //route user
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,26 +1,29 @@
-module.exports = function Cart(oldCart) {
-  this.items = oldCart.items || {};
-  this.totalQty = oldCart.totalQty || 0;
-  this.totalPrice = oldCart.totalPrice || 0;
-  this.numItems = oldCart.numItems || 0;
+module.exports = function Order(oldOrder) {
+  this.items = oldOrder.items || {};
+  this.totalQty = oldOrder.totalQty || 0;
+  this.totalPrice = oldOrder.totalPrice || 0;
 
   this.add = (item, id) => {
-    const itemQty = qty ? qty : 1;
     var storeItem = this.items[id];
     if (!storeItem) {
       storeItem = this.items[id] = {
         TENSP: item.TENSP,
-        price: item.GIA
+        GIA: item.GIA,
+        qty: 0,
+        price: 0
       };
     }
+    storeItem.qty++;
+    storeItem.price = storeItem.GIA * storeItem.qty;
     this.totalQty++;
     this.totalPrice += storeItem.GIA;
   };
 
   this.deleteItem = id => {
     var storeItem = this.items[id];
-    this.totalQty--;
-    this.totalPrice -= storeItem.GIA;
+    console.log(storeItem);
+    this.totalQty -= storeItem.qty;
+    this.totalPrice -= storeItem.price;
     delete this.items[id];
   };
 

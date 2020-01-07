@@ -33,6 +33,19 @@ const productSchema = new Schema({
   SL: {
     type: Number,
     required: true
+  },
+  GIA: {
+    type: Number,
+    required: true
+  },
+  image: {
+    type: String,
+    required: false
+  },
+  buyCount: {
+    type: Number,
+    required: true,
+    default: 0
   }
 });
 
