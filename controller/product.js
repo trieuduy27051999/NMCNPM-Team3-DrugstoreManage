@@ -1,3 +1,8 @@
+const Product = require("../model/product");
+var TENSP;
+var LOAISP;
+var MASP;
+var MANCC;
 exports.getRevenue = (req, res, next) => {
   res.render("revenue", {
     title: "Doanh thu"
@@ -5,13 +10,40 @@ exports.getRevenue = (req, res, next) => {
 };
 
 exports.getImport = (req, res, next) => {
-  res.render("import-drug", {
-    title: "Nhập thuốc"
+  TENSP = req.query.TENSP !== undefined ? req.query.TENSP : TENSP;
+  MASP = req.query.MASP !== undefined ? req.query.MASP : MASP;
+  MANCC = req.query.MANCC !== undefined ? req.query.MANCC : MANCC;
+  if (Object.entries(req.query).length == 0) {
+    TENSP = "";
+    MASP = "";
+    MANCC = "";
+  }
+  Product.find({
+    TENSP: new RegExp(TENSP, "i"),
+    MASP: new RegExp(MASP, "i"),
+    MANCC: new RegExp(MANCC, "i")
+  }).then(products => {
+    res.render("import-drug", {
+      title: "Nhập thuốc",
+      listProduct: products
+    });
   });
 };
 
 exports.getDrugList = (req, res, next) => {
-  res.render("drug-list", {
-    title: "Danh sách thuốc"
+  TENSP = req.query.TENSP !== undefined ? req.query.TENSP : TENSP;
+  LOAISP = req.query.LOAISP !== undefined ? req.query.LOAISP : LOAISP;
+  if (Object.entries(req.query).length == 0) {
+    TENSP = "";
+    LOAISP = "";
+  }
+  Product.find({
+    TENSP: new RegExp(TENSP, "i"),
+    MALOAI: new RegExp(LOAISP, "i")
+  }).then(products => {
+    res.render("drug-list", {
+      title: "Danh sách thuốc",
+      listProduct: products
+    });
   });
 };

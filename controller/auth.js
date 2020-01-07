@@ -38,3 +38,8 @@ exports.postSignUp = (req, res, next) => {
     failureFlash: true
   })(req, res, next);
 };
+
+exports.getLogOut = (req, res, next) => {
+  req.logout();
+  res.redirect("/login");
+};

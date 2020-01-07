@@ -29,6 +29,10 @@ const productSchema = new Schema({
   NGAYHETHAN: {
     type: Date,
     required: false
+  },
+  SL: {
+    type: Number,
+    required: true
   }
 });
 

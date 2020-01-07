@@ -12,10 +12,11 @@ mongoose.connect(
     if (err) throw err;
     console.log("Connect to create successfully!");
     const product = new Product({
-      MASP: "SP01",
-      MALOAI: "L01",
-      MANCC: "NCC01",
-      TENSP: "PARADOL"
+      MASP: "SP03",
+      MALOAI: "L03",
+      MANCC: "NCC03",
+      TENSP: "PARADOL123",
+      SL: 10
     });
     product.save(err => {
       if (err) throw err;
