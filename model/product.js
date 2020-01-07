@@ -33,6 +33,10 @@ const productSchema = new Schema({
   SL: {
     type: Number,
     required: true
+  },
+  GIA: {
+    type: Number,
+    required: true
   }
 });
 
