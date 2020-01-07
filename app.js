@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 //require("./util/createUser");
-//require("./util/createProduct");
+require("./util/createProduct");
 
 var createError = require("http-errors");
 var express = require("express");
